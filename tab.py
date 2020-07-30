@@ -1,14 +1,11 @@
 #!/usr/bin/env python
 import ctypes
 import sys
-from os import system
+from datetime import datetime, timedelta
 from time import sleep
 
-from datetime import datetime, timedelta
-from plyer import notification
 from utils import *
 
-# print(sys.argv)
 if len(sys.argv) > 3:
     print('Too many arguments')
     sys.exit(1)
