@@ -24,34 +24,26 @@ else:
     breakMins = float(sys.argv[2])
     print(f'Note: Using break duration of {breakMins} minutes')
 
-if is_admin():
+if isAdmin():
     while True:
+        waitForUserActivity()
+
         print('Starting work session')
-        notification.notify(
-            title='Take A Break',
-            message=f'Work session - {workMins} minutes left',
-            app_icon='logo.ico',
-            timeout=10,
-        )
+        sendNotification(f'Work session - {workMins} minutes left')
         sleep((workMins - 0.25) * 60)
+
         print('Break in 15 seconds')
-        notification.notify(
-            title='Take A Break',
-            message=f'Break in 15 seconds',
-            app_icon='logo.ico',
-            timeout=10,
-        )
+        sendNotification('Break in 15 seconds')
         sleep(15)
-        breakEndTime = datetime.now() + timedelta(minutes = breakMins)
-        notification.notify(
-            title='Take A Break',
-            message=f'You are obliged to take a break. See you at {breakEndTime.hour}:{breakEndTime.minute}',
-            app_icon='logo.ico',
-            timeout=10,
+
+        breakEndTime = datetime.now() + timedelta(minutes=breakMins)
+        print(f'Break until {breakEndTime.hour}:{breakEndTime.minute}')
+        sendNotification(
+            f'You are obliged to take a break. See you at {breakEndTime.hour}:{breakEndTime.minute}',
         )
-        blockInput(breakMins * 60)
+        blockInput(breakMins * 60)  # Does not block the thread
         blockScreen(breakMins * 60)
-        sleep(breakMins * 60)
 else:
     # Re-run the program with admin rights
-    ctypes.windll.shell32.ShellExecuteW(None, 'runas', sys.executable, ' '.join(sys.argv), None, 1)
+    ctypes.windll.shell32.ShellExecuteW(None, 'runas', sys.executable,
+                                        ' '.join(sys.argv), None, 1)

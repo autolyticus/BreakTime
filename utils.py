@@ -1,10 +1,13 @@
 #!/usr/bin/env python
 import ctypes
-from subprocess import Popen
 import tkinter as tk
 from datetime import datetime, timedelta
+from subprocess import Popen
+from time import sleep
 
 from plyer import notification
+
+import win32api
 
 
 class FullScreenApp(object):
@@ -29,12 +32,26 @@ def blockScreen(seconds):
     app=FullScreenApp(root)
     root.mainloop()
 
-def is_admin():
+def isAdmin():
     try:
         return ctypes.windll.shell32.IsUserAnAdmin()
     except:
         return False
 
-
+# Prevents any input for x seconds, uses subprocess.Popen
 def blockInput(seconds):
     Popen(f'blockInput.exe {seconds * 1000}')
+
+def waitForUserActivity():
+    firstInputInfo = win32api.GetLastInputInfo()
+    print('Waiting for user activity...')
+    while firstInputInfo - win32api.GetLastInputInfo() == 0:
+        pass
+
+def sendNotification(message):
+    notification.notify(
+        title='Take A Break',
+        message=message,
+        app_icon='logo.ico',
+        timeout=10,
+    )
