@@ -14,32 +14,27 @@ if not sys.argv[1]:
     workMins = 25
     print('Note: Using default Pomodoro work duration of 25 minutes')
 else:
-    workMins = float(sys.argv[1])
+    workMins = int(sys.argv[1])
     print(f'Note: Using work duration of {workMins} minutes')
 
 if not sys.argv[2]:
     breakMins = 5
     print('Note: Using default Pomodoro break duration of 5 minutes')
 else:
-    breakMins = float(sys.argv[2])
+    breakMins = int(sys.argv[2])
     print(f'Note: Using break duration of {breakMins} minutes')
 
 if isAdmin():
     while True:
         waitForUserActivity()
 
-        print('Starting work session')
+        print(f'\nStarting work session at {datetime.now().strftime("%H:%M")}')
         sendNotification(f'Work session - {workMins} minutes left')
-        sleep((workMins - 0.25) * 60)
-
-        print('Break in 15 seconds')
-        sendNotification('Break in 15 seconds')
-        sleep(15)
-
+        countdown(workMins*60)
         breakEndTime = datetime.now() + timedelta(minutes=breakMins)
         print(f'Break until {breakEndTime.hour}:{breakEndTime.minute}')
         sendNotification(
-            f'You are obliged to take a break. See you at {breakEndTime.hour}:{breakEndTime.minute}',
+            f'You are obliged to take a break. See you at {breakEndTime.strftime("%H:%M")}',
         )
         blockInput(breakMins * 60)  # Does not block the thread
         blockScreen(breakMins * 60)

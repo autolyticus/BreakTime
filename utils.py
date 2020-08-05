@@ -30,6 +30,7 @@ def blockScreen(seconds):
     root.configure(background='black')
     root.after(int(seconds*1000), lambda: root.destroy()) # Destroy the widget after 30 seconds
     app=FullScreenApp(root)
+    root.wm_attributes("-topmost", 1)
     root.mainloop()
 
 def isAdmin():
@@ -46,6 +47,18 @@ def waitForUserActivity():
     firstInputInfo = win32api.GetLastInputInfo()
     print('Waiting for user activity...')
     while firstInputInfo - win32api.GetLastInputInfo() == 0:
+        pass
+
+def countdown(t):
+    while t:
+        mins, secs = divmod(t, 60)
+        timeformat = '{:02d}:{:02d}'.format(mins, secs)
+        print(f"Next break in {timeformat}", end="\r")
+        sleep(1)
+        t -= 1
+        if t == 15:
+            sendNotification('Break in 15 seconds')
+            pass
         pass
 
 def sendNotification(message):
