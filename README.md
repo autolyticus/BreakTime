@@ -9,9 +9,9 @@ This app doesn't try to gently nudge you away from unhealthy work habits. It doe
 This app generously permits you to work during work time, and **forbids** you from doing anything to your computer during break time.
 
 ### Platforms
-[x] Windows
-[x] Linux (WIP)
-[ ] MacOS (need tester)
+- [x] Windows
+- [x] Linux (WIP)
+- [ ] MacOS (need tester)
 
 
 ### Pre-requisites
