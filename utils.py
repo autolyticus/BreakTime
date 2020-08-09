@@ -52,7 +52,7 @@ def waitForUserActivity():
 def countdown(t):
     while t:
         mins, secs = divmod(t, 60)
-        timeformat = '{:02d}:{:02d}'.format(mins, secs)
+        timeformat = '{:02.0f}:{:02.0f}'.format(mins, secs)
         print(f"Next break in {timeformat}", end="\r")
         sleep(1)
         t -= 1
