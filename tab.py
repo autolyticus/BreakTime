@@ -9,10 +9,10 @@ from utils import *
 if len(sys.argv) > 3:
     print('Too many arguments')
     sys.exit(1)
-    
+
 if not sys.argv[1]:
-	workMins = 25
-	print('Note: Using default Pomodoro work duration of 25 minutes')
+    workMins = 25
+    print('Note: Using default Pomodoro work duration of 25 minutes')
 else:
     workMins = float(sys.argv[1])
     print(f'Note: Using work duration of {workMins} minutes')
@@ -29,7 +29,7 @@ if isAdmin():
         waitForUserActivity()
         print(f'\nStarting work session at {datetime.now().strftime("%H:%M")}')
         sendNotification(f'Work session - {workMins} minutes left')
-        countdown(workMins*60)
+        countdown(workMins * 60)
         breakEndTime = datetime.now() + timedelta(minutes=breakMins)
         # print(f'Break: {breakEndTime.strftime("%H:%M")}')
         print(f'Break until {breakEndTime.strftime("%H:%M")}')
