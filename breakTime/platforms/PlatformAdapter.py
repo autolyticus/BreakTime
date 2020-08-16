@@ -37,9 +37,11 @@ class PlatformAdapter:
     @staticmethod
     def sendNotification(message):
         notification.notify(
-            title="Take A Break", message=message, app_icon="assets/logo.ico", timeout=10,
+            title="Take A Break",
+            message=message,
+            app_icon="assets/logo.ico",
+            timeout=10,
         )
-    
-    @staticmethod
-    def waitForUserActivity():
+
+    def getLastUserActivityTime(self):
         raise NotImplementedError
