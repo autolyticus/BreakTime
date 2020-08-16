@@ -1,3 +1,5 @@
 plyer
 pywin32
+psutil
 schedule
+python-statemachine
