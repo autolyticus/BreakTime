@@ -73,3 +73,11 @@ class LinuxAdapter(PlatformAdapter):
     def getLastUserActivityTime(self):
         idleTime = self.monitor.get_idle_time()
         return pendulum.now().subtract(microseconds=idleTime * 10 ** 6)
+
+    def blockInput(self, seconds):
+        self.inputBlocker = subprocess.Popen(
+            str(Path(__file__).parent / "blockInput.sh") + f" {seconds}",
+            shell=True,
+            stderr=subprocess.DEVNULL,
+        )
+        print(f"Blocking inputs for {seconds}")

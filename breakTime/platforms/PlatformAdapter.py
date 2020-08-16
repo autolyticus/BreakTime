@@ -50,3 +50,7 @@ class PlatformAdapter:
 
     def getLastUserActivityTime(self):
         raise NotImplementedError
+
+    @staticmethod
+    def blockInput(self, seconds):
+        raise NotImplementedError
