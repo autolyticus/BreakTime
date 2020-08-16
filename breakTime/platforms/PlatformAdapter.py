@@ -37,5 +37,5 @@ class PlatformAdapter:
     @staticmethod
     def sendNotification(message):
         notification.notify(
-            title="Take A Break", message=message, app_icon="logo.ico", timeout=10,
+            title="Take A Break", message=message, app_icon="assets/logo.ico", timeout=10,
         )
