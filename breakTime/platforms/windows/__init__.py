@@ -6,6 +6,7 @@ from pathlib import Path
 
 import win32api
 import pendulum
+import psutil
 
 from ..PlatformAdapter import PlatformAdapter
 
@@ -26,7 +27,7 @@ class WindowsAdapter(PlatformAdapter):
 
     @staticmethod
     def getLastUserActivityTime():
-        return pendulum.from_timestamp(win32api.GetLastInputInfo())
+        return pendulum.from_timestamp(psutil.boot_time() + win32api.GetLastInputInfo())
 
     def blockInput(self, seconds):
         self.inputBlocker = subprocess.Popen(
