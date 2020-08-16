@@ -3,13 +3,13 @@ import re
 
 from typing import Any
 from enum import Enum, auto
-from .IAdapter import PlatformAdapter
+from .PlatformAdapter import PlatformAdapter
 
 
 class Platforms(Enum):
-    Windows = auto
-    Linux = auto
-    Unknown = auto
+    Windows = auto()
+    Linux = auto()
+    Unknown = auto()
 
 
 onWindows = re.search("win", platform.system(), re.IGNORECASE) is not None
