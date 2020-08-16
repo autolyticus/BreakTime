@@ -1,5 +1,6 @@
 from sys import exit
 
+
 def parseArgs(argv):
     if len(argv) > 3:
         print("Too many arguments")
