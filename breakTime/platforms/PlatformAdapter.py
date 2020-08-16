@@ -5,7 +5,7 @@ from plyer import notification
 
 
 class FullScreenApp:
-    def __init__(self, master, **kwargs):
+    def __init__(self, master):
         self.master = master
         pad = 3
         self._geom = "200x200+0+0"
@@ -24,7 +24,7 @@ class PlatformAdapter:
         root.after(
             int(seconds * 1000), root.destroy
         )  # Destroy the widget after 30 seconds
-        app = FullScreenApp(root)
+        FullScreenApp(root)
         root.wm_attributes("-topmost", 1)
         root.mainloop()
 
