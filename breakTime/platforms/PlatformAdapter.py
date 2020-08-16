@@ -37,7 +37,7 @@ class PlatformAdapter:
         notification.notify(
             title="Take A Break",
             message=message,
-            app_icon="assets/logo.ico",
+            app_icon="breakTime/assets/logo.ico",
             timeout=10,
         )
 
