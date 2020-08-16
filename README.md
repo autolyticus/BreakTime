@@ -10,7 +10,7 @@ This app generously permits you to work during work time, and **forbids** you fr
 
 ### Platforms
 - [x] Windows
-- [x] Linux (WIP)
+- [x] Linux
 - [ ] MacOS (need tester)
 
 
@@ -30,10 +30,10 @@ pip install -r requirements.txt
 ```
 
 ### Usage
-Now to use this script, all you have to do is navigate to the directory and launch the `launch.cmd` script.
+Now to use this script, all you have to do is navigate to the directory and launch the `launch` script for your platform.
 
 ### Configuration
-To change the work and break time, you can edit the respective variables in `launch.cmd`
+To change the work and break time, you can edit the respective variables in the `launch` script
 
 ### Credits
 [@paperboi](https://github.com/paperboi) for the idea
