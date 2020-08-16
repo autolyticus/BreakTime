@@ -4,7 +4,7 @@ from threading import Thread
 from plyer import notification
 
 
-class FullScreenApp(object):
+class FullScreenApp:
     def __init__(self, master, **kwargs):
         self.master = master
         pad = 3

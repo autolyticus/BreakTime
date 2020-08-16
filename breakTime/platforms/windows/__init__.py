@@ -1,10 +1,11 @@
 import ctypes
 import sys
-import pendulum
+import subprocess
 from time import sleep
 from pathlib import Path
 
 import win32api
+import pendulum
 
 from ..PlatformAdapter import PlatformAdapter
 
