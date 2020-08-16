@@ -17,17 +17,14 @@ if Platform == Platforms.Windows:
     if not adapter.isAdmin():
         adapter.relaunchAsAdmin()
 
+t = Timer(workMins, breakMins)
+
 
 def mainLoop():
-    pass
+    t.update()
 
 
-def run_threaded(job_func):
-    job_thread = threading.Thread(target=job_func)
-    job_thread.start()
-
-
-schedule.every(5).seconds.do(run_threaded, mainLoop)
+schedule.every(5).seconds.do(mainLoop)
 
 
 while True:
