@@ -28,8 +28,7 @@ class WindowsAdapter(PlatformAdapter):
     def getLastUserActivityTime():
         return pendulum.from_timestamp(win32api.GetLastInputInfo())
 
-    @staticmethod
-    def blockInput(seconds):
+    def blockInput(self, seconds):
         self.inputBlocker = subprocess.Popen(
             str(Path(__file__).parent / "blockInput.exe") + f" {seconds * 1000}",
             shell=True,

@@ -14,13 +14,6 @@ class FullScreenApp:
                 master.winfo_screenwidth() - pad, master.winfo_screenheight() - pad
             )
         )
-        master.bind("<Escape>", self.toggle_geom)
-
-    def toggle_geom(self, event):
-        geom = self.master.winfo_geometry()
-        print(geom, self._geom)
-        self.master.geometry(self._geom)
-        self._geom = geom
 
 
 class PlatformAdapter:
@@ -51,6 +44,5 @@ class PlatformAdapter:
     def getLastUserActivityTime(self):
         raise NotImplementedError
 
-    @staticmethod
     def blockInput(self, seconds):
         raise NotImplementedError
