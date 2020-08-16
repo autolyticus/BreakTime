@@ -1,7 +1,7 @@
 import ctypes
 import sys
 
-from ..IAdapter import PlatformAdapter
+from ..PlatformAdapter import PlatformAdapter
 
 
 class WindowsAdapter(PlatformAdapter):

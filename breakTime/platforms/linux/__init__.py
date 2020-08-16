@@ -1,4 +1,4 @@
-from ..IAdapter import PlatformAdapter
+from ..PlatformAdapter import PlatformAdapter
 
 
 class LinuxAdapter(PlatformAdapter):
