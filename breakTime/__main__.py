@@ -1,23 +1,24 @@
 #!/usr/bin/env python3
 
 import sys
-import schedule
-import threading
 import logging
 
 from time import sleep
+
+import schedule
 
 from .cli import parseArgs
 from .platforms.adapter import Adapter, Platforms, Platform
 from .Timer import Timer
 
-DEBUG = 1
+DEBUG = 0
 
 if DEBUG:
     logging.basicConfig(
         format="%(asctime)s %(filename)s:%(lineno)d %(levelname)s:%(message)s",
         level=logging.INFO,
     )
+    logging.getLogger("schedule").setLevel(logging.WARNING)
 
 
 workMins, breakMins = parseArgs(sys.argv)
@@ -35,9 +36,9 @@ def mainLoop():
     t.tick()
 
 
-schedule.every(5).seconds.do(mainLoop)
+schedule.every(1).seconds.do(mainLoop)
 
 
 while True:
     schedule.run_pending()
-    sleep(5)
+    sleep(1)
