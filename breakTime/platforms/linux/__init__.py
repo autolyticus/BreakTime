@@ -1,6 +1,5 @@
 import ctypes
 import logging
-import pendulum
 
 from ctypes.util import find_library
 from typing import Any
@@ -8,6 +7,8 @@ from time import sleep
 import subprocess
 from pathlib import Path
 from bpdb import set_trace
+
+import pendulum
 
 from ..PlatformAdapter import PlatformAdapter
 
