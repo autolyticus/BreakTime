@@ -27,7 +27,9 @@ adapter = Adapter.get()
 
 if Platform == Platforms.Windows:
     if not adapter.isAdmin():
+        print("Relaunching as admin")
         adapter.relaunchAsAdmin()
+        sys.exit(0)
 
 t = Timer(workMins, breakMins)
 
