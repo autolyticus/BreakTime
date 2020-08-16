@@ -39,3 +39,7 @@ class PlatformAdapter:
         notification.notify(
             title="Take A Break", message=message, app_icon="assets/logo.ico", timeout=10,
         )
+    
+    @staticmethod
+    def waitForUserActivity():
+        raise NotImplementedError
