@@ -19,13 +19,6 @@ class FullScreenApp(object):
                 master.winfo_screenwidth() - pad, master.winfo_screenheight() - pad
             )
         )
-        master.bind("<Escape>", self.toggle_geom)
-
-    def toggle_geom(self, event):
-        geom = self.master.winfo_geometry()
-        print(geom, self._geom)
-        self.master.geometry(self._geom)
-        self._geom = geom
 
 
 def blockScreen(seconds):
@@ -33,9 +26,9 @@ def blockScreen(seconds):
     root.attributes("-fullscreen", True)
     root.configure(background="black")
     root.after(
-        int(seconds * 1000), lambda: root.destroy()
+        int(seconds * 1000), root.destroy()
     )  # Destroy the widget after 30 seconds
-    app = FullScreenApp(root)
+    FullScreenApp(root)
     root.wm_attributes("-topmost", 1)
     root.mainloop()
 
