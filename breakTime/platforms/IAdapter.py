@@ -1,2 +1,0 @@
-class IAdapter:
-    pass

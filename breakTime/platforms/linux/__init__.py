@@ -1,5 +1,5 @@
-from ..IAdapter import IAdapter
+from ..IAdapter import PlatformAdapter
 
 
-class LinuxAdapter(IAdapter):
+class LinuxAdapter(PlatformAdapter):
     pass

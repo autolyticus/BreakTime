@@ -3,7 +3,7 @@ import re
 
 from typing import Any
 from enum import Enum, auto
-from .IAdapter import IAdapter
+from .IAdapter import PlatformAdapter
 
 
 class Platforms(Enum):
@@ -25,7 +25,7 @@ class Adapter:
     """ Encapsulates all platform specific code using the Adapter pattern """
 
     @staticmethod
-    def get(*args: Any, **kwargs: Any) -> IAdapter:
+    def get(*args: Any, **kwargs: Any) -> PlatformAdapter:
         if Platform == Platforms.Windows:
             from .windows import WindowsAdapter
 

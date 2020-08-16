@@ -1,10 +1,10 @@
 import ctypes
 import sys
 
-from ..IAdapter import IAdapter
+from ..IAdapter import PlatformAdapter
 
 
-class WindowsAdapter(IAdapter):
+class WindowsAdapter(PlatformAdapter):
     @staticmethod
     def relaunchAsAdmin():
         ctypes.windll.shell32.ShellExecuteW(
