@@ -61,7 +61,6 @@ class Timer(StateMachine):
             )
         elif self.is_Break:
             if e := self.getLastEvent("StateChange"):
-                # 15 seconds were left in current work session
                 if pendulum.now() >= e["ts"].add(seconds=self.breakSeconds):
                     self.restart()
                     return
@@ -96,7 +95,6 @@ class Timer(StateMachine):
             "state": state,
         }
         self.addToHistory(stateChangeEvent)
-        self.state = state
 
     def getLastEvent(self, name):
         return list(filter(lambda e: e["name"] == name, self.history))[-1]
