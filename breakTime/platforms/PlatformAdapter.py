@@ -1,4 +1,6 @@
 import tkinter as tk
+from threading import Thread
+
 from plyer import notification
 
 
@@ -22,17 +24,20 @@ class FullScreenApp(object):
 
 
 class PlatformAdapter:
-    @staticmethod
-    def blockScreen(seconds):
+    def blockScreenHelper(self, seconds):
         root = tk.Tk()
         root.attributes("-fullscreen", True)
         root.configure(background="black")
         root.after(
-            int(seconds * 1000), lambda: root.destroy()
+            int(seconds * 1000), root.destroy
         )  # Destroy the widget after 30 seconds
         app = FullScreenApp(root)
         root.wm_attributes("-topmost", 1)
         root.mainloop()
+
+    def blockScreen(self, seconds):
+        t = Thread(target=self.blockScreenHelper, args=(seconds,))
+        t.start()
 
     @staticmethod
     def sendNotification(message):
