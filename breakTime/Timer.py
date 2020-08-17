@@ -42,7 +42,7 @@ class Timer(StateMachine):
         elif self.is_Work:
             if e := self.getLastEvent("StateChange"):
                 # If it has been enough time since work started
-                if pendulum.now() >= e["ts"].add(seconds=self.breakSeconds - 15):
+                if pendulum.now() >= e["ts"].add(seconds=self.workSeconds - 15):
                     self.notifyImminentBreak()
                     return
             print(
